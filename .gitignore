@@ -8,6 +8,7 @@ node_modules/
 # Build outputs
 dist/
 build/
+coverage/
 
 # TypeScript/Vite cache
 *.tsbuildinfo
@@ -15,3 +16,13 @@ build/
 
 # OS / editor
 .DS_Store
+Thumbs.db
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
+*.swp
+
+# Environment files
+.env*

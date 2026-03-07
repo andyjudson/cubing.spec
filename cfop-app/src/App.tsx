@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import Markdown from 'react-markdown';
-import { MdStar, MdVideocam } from 'react-icons/md';
+import { MdStar, MdVideocam, MdTimer } from 'react-icons/md';
 import 'bulma/css/bulma.min.css';
 import './App.css';
 import { DemoModal } from './components/DemoModal';
+import { PracticeSessionModal } from './components/PracticeSessionModal';
 
 interface CfopAlgorithm {
   id: string;
@@ -24,6 +25,7 @@ function App() {
   const [tooltipLeft, setTooltipLeft] = useState<boolean>(false);
   const [showDemo, setShowDemo] = useState(false);
   const [demoAlgorithm, setDemoAlgorithm] = useState<CfopAlgorithm | null>(null);
+  const [showPracticeSession, setShowPracticeSession] = useState(false);
 
   useEffect(() => {
     const loadAlgorithms = async () => {
@@ -78,6 +80,14 @@ function App() {
     setDemoAlgorithm(null);
   };
 
+  const handleOpenPracticeSession = () => {
+    setShowPracticeSession(true);
+  };
+
+  const handleClosePracticeSession = () => {
+    setShowPracticeSession(false);
+  };
+
   const renderAlgorithmSection = (title: string, algs: CfopAlgorithm[]) => (
     <section className="section">
       <h2 className="title is-4 has-text-centered section-title">{title}</h2>
@@ -127,14 +137,24 @@ function App() {
     <div className="container py-5 app-shell">
       <section className="section pt-0 has-text-centered">
         <h1 className="title is-2">Cubing - Learning CFOP 2LK Methodology</h1>
-        <p className="subtitle is-5">Essential OLL and PLL algorithms for solving the last layer for a 3x3x3 Rubik's cube. Assumes you've learnt intuitive Cross and F2L.</p>
+        <p className="subtitle is-5 page-intro-subtitle">Essential OLL and PLL algorithms for solving the last layer for a 3x3x3 Rubik's cube. Assumes you've learnt intuitive Cross and F2L.</p>
         <p className="essentials-summary"><strong>Essentials:</strong> {essentialsSummary}</p>
       </section>
       
-      <div className="has-text-centered mb-5">
+      <div className="has-text-centered mb-5 button-row">
+        <button
+          className="button is-link is-light demo-button"
+          onClick={handleOpenPracticeSession}
+          aria-label="Open scramble and timer practice session"
+        >
+          <MdTimer size={18} />
+          <span>Practice Scramble + Timer</span>
+        </button>
+
         <button 
           className="button is-primary demo-button"
           onClick={handleOpenDemo}
+          aria-label="Open random algorithm demo"
         >
           <MdVideocam size={18} />
           <span>Demo Random Algorithm</span>
@@ -151,6 +171,11 @@ function App() {
       {showDemo && demoAlgorithm && (
         <DemoModal algorithm={demoAlgorithm} onClose={handleCloseDemo} />
       )}
+
+      <PracticeSessionModal
+        isOpen={showPracticeSession}
+        onClose={handleClosePracticeSession}
+      />
     </div>
   );
 }

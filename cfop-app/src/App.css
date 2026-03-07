@@ -13,6 +13,10 @@
   color: #334155;
 }
 
+.page-intro-subtitle {
+  margin-top: 0.9rem;
+}
+
 .essentials-summary {
   display: inline-block;
   margin-top: 0.75rem;
@@ -39,6 +43,14 @@
   font-size: 0.9rem;
   transition: all 0.2s ease;
   box-shadow: 0 1px 4px rgba(59, 130, 246, 0.15);
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
 .demo-button:hover {
