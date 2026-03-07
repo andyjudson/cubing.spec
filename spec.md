@@ -18,8 +18,8 @@ A cross-platform mobile/web application for learning Rubik's cube solving method
 
 ### Algorithm Sets
 - Intuitive (cross + f2l): techniques rather than algorithms
-- Beginner 3/2-look methods (bgr): OLL and PLL simplified
-- First 2 layers (f2l): 41 case patterns
+- Beginner 2-look methods (bgr/2lk): minimal set of OLL and PLL cases to enable solves of the last layer, but likely requires repetition.
+- First 2 Layers (f2l): 41 case patterns
 - Orientation of Last Layer (oll): 57 case patterns
 - Permutation of Last Layer (pll): 21 case patterns
 
@@ -69,11 +69,20 @@ Each algorithm contains:
 ## Technical Architecture
 
 ### Reference Implementation
-- see cubing.react project for the app built last year by me + copilot chat mode
-- index.html for core implementation
-- paper.html for the simple, printable, offline one-pagers
-- src/data for alg sets and mappings to images
-- public/assets for generated cube images 
+- see cubing.react project for the app built last year by me + copilot chat mode. This should just be used for an example of my existing implementation. I quite the like the structure, user flows, content but I also want to experiment with new approaches, where as I would want to reuse the resources in future implementations.
+- index.html for core implementation with a more interactive experience
+- paper.html for a minimalist, printable, offline one-pager
+- src/data for alg sets defined in json with links to image assets
+- public/assets for generated cube images png or svg files
+
+### Shared Resources
+**IMPORTANT**: All reusable assets (algorithm JSON data, images, working components) are documented in [shared-resources.md](shared-resources.md). When building new apps, use symlinks for experimentation rather than copying.
+
+Key shared resources to reuse:
+- **Algorithm JSON data** (`shared-data/`): Complete CFOP algorithm definitions
+- **Algorithm images** (`shared-assets/cfop_*`): Generated cube case visualizations  
+- **Working components** (`cubing.react/cfop-app/src/components/`): Tested React components
+- **Type definitions** (`cubing.react/cfop-app/src/types/`): TypeScript interfaces
 
 ### Component Structure
 - App: Main router and navigation

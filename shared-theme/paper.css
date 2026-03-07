@@ -1,0 +1,32 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+.printable-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cube-model-md {
+    width: 140x;
+    height: 140px;
+}
+
+.no-break {
+    page-break-inside: avoid;
+}
+
+.alg-group {
+    color: var(--bulma-warning-45);
+    font-weight: 600;
+}
+
+.alg-name {
+    color: var(--bulma-primary-25);
+    font-weight: 400;
+    font-size: small;
+}
+
+.alg-notation {
+    white-space: pre-wrap;
+    font-weight: 500;
+}

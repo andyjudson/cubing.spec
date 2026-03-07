@@ -1,0 +1,152 @@
+ion-segment {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+ion-segment-button {
+  min-width: 70px; /* based on approx menu width divided by 4 */
+}
+
+ul li {
+  font-size: 1.0rem;
+}
+
+.cube-flex-block {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.cube-flex-block .cube-model-sm {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.cube-model-sm {
+  width: 80px;
+  height: 80px;
+}
+
+.cube-model-md {
+  width: 130x;
+  height: 130px;
+}
+
+.cube-model-lg {
+  width: 240px;
+  height: 240px;
+}
+
+.menu-group-name {
+  padding: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: darkgray;
+}
+
+.algorithm-details {
+  max-width: 500px; /* control size of container so centering looks clean on both mobile and laptops */
+  text-align: center;
+}
+
+.algorithm-details .header-name {
+  color: darkgray;
+  font-size: 0.9rem;
+}
+
+.algorithm-details .header-group {
+  color: darkgray;
+  font-size: 0.7rem;
+}
+
+.algorithm-details .notation {
+  color: var(--ion-color-primary);
+  white-space: pre-wrap; /* used to inject line breaks when rendering algorithms, can get messy around move 10 */
+}
+
+.algorithm-details .footnote {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: lightgray;
+  text-align: left;
+}
+
+.algorithm-grid {
+  text-align: center;
+}
+
+.algorithm-grid .header-name {
+  font-size: 0.9rem;
+  color: darkgray;
+  margin-bottom: 4px;
+}
+
+.algorithm-grid .header-group {
+  font-size: 0.7rem;
+  color: darkgray;
+}
+
+.algorithm-grid .notation {
+  font-size: 1.3rem;
+  white-space: pre-wrap;
+  margin-top: 4px;
+}
+
+.zoomable-img:hover,
+.zoomable-img:active {
+  transform: scale(1.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.twisty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%; /* ensure full height */
+  width: 100%; /* ensure full width */
+  padding: 0; /* remove internal padding */
+}
+
+.twisty-container .header-name {
+  font-size: 0.9rem;
+  color: darkgray;
+}
+
+.twisty-container .header-group {
+  font-size: 0.7rem;
+  color: darkgray;
+}
+
+#twisty-player {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: auto;
+  transform: translateX(-50px); /* shift player to the left */
+}
+
+#twisty-viewer {
+  width: 100%; /* full width of the container */
+  margin-top: 5px; /* add space between player and viewer */
+  padding-left: 20px; /* add padding */
+  padding-right: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--ion-color-primary);
+}
+
+#twisty-viewer .twisty-alg-current-move {
+  font-weight: 400;
+  font-size: 2rem;
+  padding: 2px;
+}
+
+@media (min-width: 768px) {
+  .custom-modal {
+    --width: 500px;
+    --height: 90vh; /* adjust height (vh is a percentage of the viewport) */
+  }
+}
