@@ -2,7 +2,7 @@
 
 ## Scope
 - Primary project: `cubing.spec`
-- Current implementation target: `cubing.spec/new-cubing-site`
+- Current implementation target: `cubing.spec/cfop-app`
 - Ignore `cubing.react` and `cubing.static` unless explicitly requested.
 
 ## Current Status
