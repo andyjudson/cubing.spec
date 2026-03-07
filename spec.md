@@ -33,6 +33,7 @@ Add interactive tooltips to display algorithm notes when hovering over case imag
 - Keep light cards with subtle border/shadow for readability
 - Use darker text for headings/body copy on white backgrounds
 - Keep notation text in monospace style for algorithm readability
+- Make notation text block + shaded background span full card content width
 - Use a soft indigo-tint section header background (instead of cyan)
 
 ### User Stories
@@ -136,6 +137,7 @@ Each algorithm contains:
 - Centered cube images within cards ✅
 - Bulma adopted for layout/components (container, grid, cards, typography) ✅
 - Light theme styling tuned for readability (darker text, neutral header, soft section backgrounds) ✅
+- Algorithm notation row set to full-width shaded block in each card ✅
 - Production build verified ✅
 
 ### Future Iterations (Out of Scope)
