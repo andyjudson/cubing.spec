@@ -61,6 +61,17 @@ This application exists to help users (namely me) learn Rubik's cube solving met
 
 ## Development Guidelines
 
+### Specification Workflow (Hybrid Model)
+- Keep `spec.md` as the high-level product narrative, status ledger, and feature sequence source of truth.
+- Create one per-feature folder under `specs/<NNN>-<kebab-name>/` for every new feature from now on.
+- For each feature folder, include at minimum:
+	- `spec.md`
+	- `checklists/requirements.md`
+	- `implementation-summary.md` (once implemented)
+- Keep numbering contiguous and aligned with the feature numbering in `spec.md`.
+- If historical features are missing folders, backfill them as retrospective artifacts and label them clearly as retrospective.
+- Prefer this hybrid pattern over either extreme (single monolithic spec only, or disconnected per-feature docs only).
+
 ### Architecture Decisions
 - Component-based React architecture
 - State management via React hooks
