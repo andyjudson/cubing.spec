@@ -1,30 +1,36 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// Workaround for cubing.js worker loading in production builds
+// See: https://github.com/vitejs/vite/issues/14499#issuecomment-1740267849
+const workerImportMetaUrlRE =
+  /\bnew\s+(?:Worker|SharedWorker)\s*\(\s*(new\s+URL\s*\(\s*('[^']+'|"[^"]+"|`[^`]+`)\s*,\s*import\.meta\.url\s*\))/g
+
 export default defineConfig({
   plugins: [react()],
   base: '/cubing.spec/',
   optimizeDeps: {
     exclude: ['cubing/scramble'],
-    esbuildOptions: {
-      target: 'esnext',
-    },
   },
-  build: {
-    target: 'esnext',
-    modulePreload: {
-      polyfill: false,
-    },
+  worker: {
+    format: 'es',
+    plugins: [
+      {
+        name: 'cubing-worker-workaround',
+        enforce: 'pre',
+        transform(code, id) {
+          if (code.includes('new Worker') && code.includes('new URL') && code.includes('import.meta.url')) {
+            const result = code.replace(workerImportMetaUrlRE, `((() => { throw new Error('Nested workers are disabled') })()`)
+            return result
+          }
+        }
+      }
+    ],
     rollupOptions: {
       output: {
-        // Ensure workers are placed in a predictable location
-        chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.name.includes('worker') || chunkInfo.name.includes('search')) {
-            return 'assets/[name]-[hash].js';
-          }
-          return 'assets/[name]-[hash].js';
-        },
-      },
-    },
-  },
+        chunkFileNames: 'assets/worker/[name]-[hash].js',
+        assetFileNames: 'assets/worker/[name]-[hash].js'
+      }
+    }
+  }
 })
