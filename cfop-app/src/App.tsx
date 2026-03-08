@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     const loadAlgorithms = async () => {
       try {
-        const response = await fetch('/data/algs-cfop-bgr.json');
+        const response = await fetch('/cubing.spec/data/algs-cfop-bgr.json');
         const data = await response.json();
         setAlgorithms(data);
       } catch (error) {
