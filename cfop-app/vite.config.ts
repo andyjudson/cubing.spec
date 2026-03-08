@@ -14,11 +14,11 @@ export default defineConfig({
   },
   worker: {
     format: 'es',
-    plugins: [
+    plugins: () => [
       {
         name: 'cubing-worker-workaround',
         enforce: 'pre',
-        transform(code, id) {
+        transform(code: string) {
           if (code.includes('new Worker') && code.includes('new URL') && code.includes('import.meta.url')) {
             const result = code.replace(workerImportMetaUrlRE, `((() => { throw new Error('Nested workers are disabled') })()`)
             return result
