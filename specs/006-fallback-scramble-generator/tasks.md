@@ -31,7 +31,7 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 
 ## Phase 1: Setup & Foundational
 
-- [ ] T001 Create feature branch and verify structure
+- [x] T001 Create feature branch and verify structure
 
 ---
 
@@ -46,7 +46,7 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 - ✅ All 14 functional requirements are traceable to design artifacts or tasks
 - ✅ No ambiguities blocking implementation (clarifications locked from spec session)
 
-- [ ] T001a [GATE] Review Phase 1 design artifacts (research, data-model, contracts) against spec requirements; confirm all constraints and API behaviors are clear before proceeding to T002
+- [x] T001a [GATE] Review Phase 1 design artifacts (research, data-model, contracts) against spec requirements; confirm all constraints and API behaviors are clear before proceeding to T002
 
 ---
 
@@ -62,11 +62,11 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 - All outputs parseable by `Alg.fromString`
 - Timeout wrapper returns failure after 1000ms
 
-- [ ] T002 [P] Implement fallbackScrambleGenerator.ts with core move generation logic
-- [ ] T003 [P] Implement quality constraint validation (no consecutive/opposite-face patterns)
-- [ ] T004 [P] Implement parser validation wrapper (Alg.fromString compatibility)
-- [ ] T005 [P] Implement timeout wrapper with configurable duration (1000ms default)
-- [ ] T006 [P] Add TypeScript types and result union types (Success | Failure)
+- [x] T002 [P] Implement fallbackScrambleGenerator.ts with core move generation logic
+- [x] T003 [P] Implement quality constraint validation (no consecutive/opposite-face patterns)
+- [x] T004 [P] Implement parser validation wrapper (Alg.fromString compatibility)
+- [x] T005 [P] Implement timeout wrapper with configurable duration (1000ms default)
+- [x] T006 [P] Add TypeScript types and result union types (Success | Failure)
 
 ---
 
@@ -81,13 +81,13 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 - Inline error message displays on failure, clears on success
 - No out-of-order state updates
 
-- [ ] T007 [P] [US1] Add request tracking state to PracticeSessionModal (requestId counter + activeRequestId)
-- [ ] T008 [P] [US1] Implement New Scramble click handler with request token generation
-- [ ] T009 [P] [US1] Implement generator call with await + result handling (fulfilled/timedOut/failed paths)
-- [ ] T010 [P] [US1] Add lastValidScramble preservation logic on failure
-- [ ] T011 [P] [US1] Add inline error text UI and clear-on-success logic
-- [ ] T012 [US1] Update PracticeSessionModal to import fallback generator (replace cubing/scramble import)
-- [ ] T013 [US1] Verify timer controls still prevent scramble changes during timing (confirms FR-006 scramble-protection-during-active-timer requirement)
+- [x] T007 [P] [US1] Add request tracking state to PracticeSessionModal (requestId counter + activeRequestId)
+- [x] T008 [P] [US1] Implement New Scramble click handler with request token generation
+- [x] T009 [P] [US1] Implement generator call with await + result handling (fulfilled/timedOut/failed paths)
+- [x] T010 [P] [US1] Add lastValidScramble preservation logic on failure
+- [x] T011 [P] [US1] Add inline error text UI and clear-on-success logic
+- [x] T012 [US1] Update PracticeSessionModal to import fallback generator (replace cubing/scramble import)
+- [x] T013 [US1] Verify timer controls still prevent scramble changes during timing (confirms FR-006 scramble-protection-during-active-timer requirement)
 
 ---
 
@@ -101,10 +101,10 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 - No worker-specific excludes remain in vite.config.ts
 - Production bundle size reduced
 
-- [ ] T014 [P] Search and remove all cubing/scramble imports from src/ (verify grep output)
-- [ ] T015 [P] Search and remove all cubing/search imports from src/
-- [ ] T016 [P] Update vite.config.ts: remove optimizeDeps.exclude workaround
-- [ ] T017 [US1] Run `npm run build` and verify production bundle succeeds
+- [x] T014 [P] Search and remove all cubing/scramble imports from src/ (verify grep output)
+- [x] T015 [P] Search and remove all cubing/search imports from src/
+- [x] T016 [P] Update vite.config.ts: remove optimizeDeps.exclude workaround
+- [x] T017 [US1] Run `npm run build` and verify production bundle succeeds
 
 ---
 
@@ -133,18 +133,18 @@ Replace runtime dependency on `cubing/scramble` workers (production blocker) wit
 
 ## Phase 6: Polish & Documentation
 
-- [ ] T025 Add comments/JSDoc to fallbackScrambleGenerator.ts explaining quality rules
-- [ ] T026 Update src/utils/scramble.ts imports/exports for clarity
-- [ ] T027 Verify TypeScript build passes (`npm run build`)
+- [x] T025 Add comments/JSDoc to fallbackScrambleGenerator.ts explaining quality rules
+- [x] T026 Update src/utils/scramble.ts imports/exports for clarity
+- [x] T027 Verify TypeScript build passes (`npm run build`)
 - [ ] T028 Update CHANGELOG or release notes (if applicable)
 
 ---
 
 ## Phase 7: Local Validation Gate (Required Before Merge/Push)
 
-- [ ] T029 Run local production build (`npm run build`) and confirm success
+- [x] T029 Run local production build (`npm run build`) and confirm success
 - [ ] T030 Run manual local feature test pass (T018–T023) and record pass/fail checklist
-- [ ] T031 Perform brief manual code review/sign-off (generator rules, timeout/failure handling, request concurrency)
+- [x] T031 Perform brief manual code review/sign-off (generator rules, timeout/failure handling, request concurrency)
 - [ ] T032 Merge/push only after T029–T031 all pass
 
 ---

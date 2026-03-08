@@ -15,11 +15,11 @@ const assertValidScramble = (notation: string): void => {
 };
 
 /**
- * Generate a random 3x3 scramble using the fallback generator.
- * 
- * This replaces the `cubing/scramble` worker which fails in production builds
- * on GitHub Pages. Uses a local deterministic rule-based generator instead.
- * 
+ * Generate a random 3x3 scramble using the custom local generator.
+ *
+ * Note: This is now the primary scramble generation path for the app.
+ * `cubing/scramble` worker generation has been removed from runtime usage.
+ *
  * Guarantees:
  * - 20-move output
  * - No consecutive same-face moves
