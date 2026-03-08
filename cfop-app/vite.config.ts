@@ -4,7 +4,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/cubing.spec/',
-  worker: {
-    format: 'es',
+  optimizeDeps: {
+    exclude: ['cubing/scramble'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'cubing': ['cubing/alg', 'cubing/twisty'],
+        }
+      }
+    }
+  }
 })
