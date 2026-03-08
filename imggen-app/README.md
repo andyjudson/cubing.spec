@@ -1,6 +1,8 @@
 # imggen-app
 
-Standalone cube image generator app for 3×3 algorithm documentation.
+Local-only standalone cube image generator for 3×3 algorithm documentation.
+
+**Note:** This is a development utility for generating algorithm images. It is not deployed to GitHub Pages - use locally for image generation workflows.
 
 ## Features
 

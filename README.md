@@ -9,6 +9,8 @@ Specification-driven cubing applications for Rubik's cube learning and algorithm
 ### cfop-app
 CFOP learning companion for speedsolving with algorithm reference grids, interactive visualizations, practice timers, and solve tracking.
 
+**Live app:** https://andyjudson.github.io/cubing.spec/
+
 **Features:**
 - Algorithm reference grids (2-look OLL/PLL + beginner cases)
 - Interactive tooltips with algorithm notes
@@ -19,7 +21,9 @@ CFOP learning companion for speedsolving with algorithm reference grids, interac
 **Directory:** `/cfop-app/` • [README](cfop-app/README.md)
 
 ### imggen-app
-Standalone cube image generator for algorithm documentation with 3D PNG and 2D SVG export capabilities.
+Local-only standalone cube image generator for algorithm documentation with 3D PNG and 2D SVG export capabilities.
+
+**Usage:** Local development tool (not deployed to GitHub Pages)
 
 **Features:**
 - 3D PNG capture at native resolution (~4096×4096)
