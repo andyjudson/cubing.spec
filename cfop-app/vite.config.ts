@@ -15,5 +15,16 @@ export default defineConfig({
     modulePreload: {
       polyfill: false,
     },
+    rollupOptions: {
+      output: {
+        // Ensure workers are placed in a predictable location
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.name.includes('worker') || chunkInfo.name.includes('search')) {
+            return 'assets/[name]-[hash].js';
+          }
+          return 'assets/[name]-[hash].js';
+        },
+      },
+    },
   },
 })
