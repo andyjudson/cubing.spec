@@ -10,11 +10,13 @@ CFOP learning companion for speedsolving with algorithm reference grids, interac
 **Live app:** https://andyjudson.github.io/cubing.spec/
 
 **Features:**
-- Algorithm reference grids (2-look OLL/PLL + beginner cases)
-- Interactive tooltips with algorithm notes
-- Solve visualization modal with cubing.js TwistyPlayer
-- Practice timer with custom scramble generator
+- Full CFOP navigation (2LK, F2L, OLL, PLL) with 119 total algorithms
+- Expandable/collapsible algorithm sections with session persistence
+- Interactive tooltips with algorithm notes (2LK page only)
+- Solve visualization modal with cubing.js TwistyPlayer (2LK page only)
+- Practice timer with fallback scramble generator (2LK page only)
 - Persistent solve time tracking via localStorage
+- OLL consolidated from 14→7 balanced groups for improved scanability
 
 **Directory:** `/cfop-app/` • [README](cfop-app/README.md)
 
@@ -46,9 +48,9 @@ I first learned to solve a cube using the beginner method from [JPerm](https://w
 CFOP is a four-step 3x3 speedcubing method developed around 1981 and is responsible for most [world record](https://www.worldcubeassociation.org/results/records?event_id=333&show=mixed+history) times over the last decade (sub-5 seconds is wild! 🤯).
 
 - **Cross** - Solve four edge pieces on the bottom face (intuitive)
-- **F2L** (First Two Layers) - Insert edge-corner pairs into four slots (intuitive). There are 41 cases in total, or  4 if use intuitive method.
-- **OLL** (Orientation of Last Layer) - Orient last layer pieces (algorithmic). There are 57 cases in total, or 10 if use 2-look method.
-- **PLL** (Permutation of Last Layer) - Position last layer pieces (algorithmic). There are 21 cases in total, or 6 if use 2-look method.
+- **F2L** (First Two Layers) - Insert edge-corner pairs into four slots (intuitive or algorithmic). There are 41 algorithmic cases in total, or 4 if using the intuitive method.
+- **OLL** (Orientation of Last Layer) - Orient last layer pieces (algorithmic). There are 57 cases in total organized in 7 balanced groups, or 10 if using the 2-look method.
+- **PLL** (Permutation of Last Layer) - Position last layer pieces (algorithmic). There are 21 cases in total organized in 5 groups, or 6 if using the 2-look method.
 
 Start with the essential four algorithms (Sune, AntiSune, T-Perm, Ua-Perm), then gradually expand to the full 2-look suite for better efficiency.
 
@@ -117,7 +119,8 @@ cubing.spec/
 │   ├── 004-practice-timer/
 │   ├── 005-stats-persistence/
 │   ├── 006-scramble-generator/
-│   └── 007-cube-image-generator/
+│   ├── 007-cube-image-generator/
+│   └── 008-full-cfop-grids/
 └── .specify/           # Spec-kit configuration
 ```
 
@@ -131,4 +134,4 @@ Note:
 
 ---
 
-**Status**: Active development • Features 001-007 complete
+**Status**: Active development • Features 001-008 complete
