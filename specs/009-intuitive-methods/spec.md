@@ -5,6 +5,15 @@
 **Status**: Draft  
 **Input**: User description: "Add intuitive methods learning content to cfop-app by reusing notes and images from legacy IntuitivePage, including intuitive Cross and intuitive F2L guidance, with a layout aligned to the existing app patterns and mobile-friendly navigation."
 
+## Clarifications
+
+### Session 2026-03-08
+
+- Q: How should missing legacy images be handled in example cards? → A: Keep the case card visible with its label and show an "Image unavailable" placeholder message.
+- Q: Should creator-specific references from legacy copy be kept? → A: Remove creator-specific mentions and keep neutral instructional wording.
+- Q: How should legacy move hints be handled when some are truncated (e.g., with "...")? → A: Show only complete move hints and omit truncated/partial hints.
+- Q: Should this feature include interactive controls (toggles/expanders) or remain static content? → A: Keep it static content only.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Learn Intuitive Cross Basics (Priority: P1)
@@ -52,7 +61,7 @@ As a mobile user, I can reach the Intuitive Methods page from the main navigatio
 
 ### Edge Cases
 
-- If one or more legacy images are missing or unavailable, the page should still render all available content and clearly indicate unavailable visuals.
+- If one or more legacy images are missing or unavailable, the corresponding case card must remain visible with its original label and an "Image unavailable" placeholder message.
 - If a learner opens Intuitive Methods directly from a shared/deep link, the page should render correctly with no dependency on prior navigation steps.
 - If content includes longer guidance paragraphs, spacing and line length should remain readable on small screens.
 
@@ -68,8 +77,11 @@ As a mobile user, I can reach the Intuitive Methods page from the main navigatio
 - **FR-006**: The system MUST make the Intuitive Methods page accessible from the main app navigation.
 - **FR-007**: Navigation to and from Intuitive Methods MUST preserve expected page state indicators (current-page highlighting and route accuracy).
 - **FR-008**: The Intuitive Methods page MUST remain usable on small-screen devices without horizontal scrolling in core content regions.
-- **FR-009**: If legacy content cannot be loaded fully, the system MUST fail gracefully and continue to show available sections.
+- **FR-009**: If any legacy image is unavailable, the system MUST keep that case card visible, preserve its label, and display an "Image unavailable" placeholder message while continuing to show all other available sections.
 - **FR-010**: The feature MUST not remove or degrade existing algorithm reference pages (2LK, F2L, OLL, PLL).
+- **FR-011**: Instructional copy on this page MUST use neutral wording and MUST exclude creator-specific attributions or recommendations carried over from legacy text.
+- **FR-012**: If move hints are shown in example cards, the system MUST display only complete hints and MUST omit truncated or partial hints.
+- **FR-013**: The Intuitive Methods page MUST remain static instructional content only and MUST NOT introduce interactive widgets such as collapsible sections, expanders, or per-card reveal controls in this feature.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -79,9 +91,10 @@ As a mobile user, I can reach the Intuitive Methods page from the main navigatio
 
 ### Assumptions & Dependencies
 
-- Legacy intuitive notes and image assets are available for reuse and are considered approved baseline content.
+- Legacy intuitive notes and image assets are available for reuse and are considered approved baseline content, with creator-specific references removed in favor of neutral instructional wording.
 - Existing app navigation patterns remain the primary entry model for all top-level learning pages.
 - This feature introduces instructional content only; it does not require solve timers, demos, or new algorithm datasets.
+- This feature remains non-interactive in scope; no section toggles, card expanders, or hint-reveal controls are included.
 
 ## Success Criteria *(mandatory)*
 
