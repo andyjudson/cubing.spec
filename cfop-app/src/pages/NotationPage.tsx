@@ -154,11 +154,110 @@ function NotationPage() {
           imageSrc: '/cubing.spec/assets/notation/syntax-R-double-arrow.png',
           imageAlt: 'Right face double turn'
         },
+        {
+          id: 'mod-wide',
+          symbol: 'r',
+          label: 'Wide Turn (lowercase)',
+          explanation: 'Turn the face and middle layer together simultaneously',
+          imageSrc: '/cubing.spec/assets/notation/syntax-R-wide-arrow.png',
+          imageAlt: 'Right face wide turn'
+        },
+      ]
+    },
+    {
+      id: 'slice-moves',
+      title: 'Slice Moves',
+      description: 'Turn only the middle layer between two opposite faces. Each slice follows the same direction as its corresponding face turn.',
+      examples: [
+        {
+          id: 'slice-M',
+          symbol: 'M',
+          label: 'M (Middle)',
+          explanation: 'Turn middle layer in same direction as L face (between R and L)',
+          imageSrc: '/cubing.spec/assets/notation/syntax-M-cw-arrow.png',
+          imageAlt: 'M slice turn'
+        },
+        {
+          id: 'slice-S',
+          symbol: 'S',
+          label: 'S (Standing)',
+          explanation: 'Turn middle layer in same direction as F face (between F and B)',
+          imageSrc: '/cubing.spec/assets/notation/syntax-S-cw-arrow.png',
+          imageAlt: 'S slice turn'
+        },
+        {
+          id: 'slice-E',
+          symbol: 'E',
+          label: 'E (Equatorial)',
+          explanation: 'Turn middle layer in same direction as D face (between U and D)',
+          imageSrc: '/cubing.spec/assets/notation/syntax-E-cw-arrow.png',
+          imageAlt: 'E slice turn'
+        },
+      ]
+    },
+    {
+      id: 'cube-rotations',
+      title: 'Cube Rotations',
+      description: 'Rotate the entire cube on an axis without changing piece positions. Lowercase letters denote the axis of rotation.',
+      examples: [
+        {
+          id: 'rotation-x',
+          symbol: 'x',
+          label: 'x (R axis)',
+          explanation: 'Rotate entire cube in same direction as R face',
+          imageSrc: '/cubing.spec/assets/notation/syntax-X-cw-arrow.png',
+          imageAlt: 'x cube rotation'
+        },
+        {
+          id: 'rotation-y',
+          symbol: 'y',
+          label: 'y (U axis)',
+          explanation: 'Rotate entire cube in same direction as U face',
+          imageSrc: '/cubing.spec/assets/notation/syntax-Y-cw-arrow.png',
+          imageAlt: 'y cube rotation'
+        },
+        {
+          id: 'rotation-z',
+          symbol: 'z',
+          label: 'z (F axis)',
+          explanation: 'Rotate entire cube in same direction as F face',
+          imageSrc: '/cubing.spec/assets/notation/syntax-Z-cw-arrow.png',
+          imageAlt: 'z cube rotation'
+        },
       ]
     },
   ];
 
-  const triggers: TriggerReference[] = [];
+  const triggers: TriggerReference[] = [
+    {
+      id: 'sexy',
+      name: 'Sexy Move',
+      sequence: 'R U R\' U\'',
+      inverse: 'U R U\' R\'',
+      context: 'Basic insert for many OLL/PLL cases'
+    },
+    {
+      id: 'reverse-sexy',
+      name: 'Reverse Sexy',
+      sequence: 'R\' U\' R U',
+      inverse: 'U\' R\' U R',
+      context: 'Undo or reverse insertions'
+    },
+    {
+      id: 'sledgehammer',
+      name: 'Sledgehammer',
+      sequence: 'R\' F R F\'',
+      inverse: 'F R\' F\' R',
+      context: 'OLL or F2L slot manipulation'
+    },
+    {
+      id: 'trigger-insert',
+      name: 'Trigger Insert',
+      sequence: 'R U R\'',
+      inverse: 'R U\' R\'',
+      context: 'F2L inserts or OLL/PLL setups'
+    },
+  ];
 
   return (
     <CfopPageLayout
