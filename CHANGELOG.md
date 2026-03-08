@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-03-08 (retrospective) - Features 001-005 Baseline
+## 2026-03-07 Feature Baseline (001-005): Build simple app for CFOP (2LK) practice
 
 ### Feature 001 - Beginner 2-look Algorithm Cases Grid
 - Added static learning grids for beginner/2-look CFOP cases.

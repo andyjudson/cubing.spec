@@ -19,18 +19,11 @@ I first learned to solve a cube using the beginner method from [JPerm](https://w
 CFOP is a four-step 3x3 speedcubing method developed around 1981 and is responsible for most [world record](https://www.worldcubeassociation.org/results/records?event_id=333&show=mixed+history) times over the last decade (sub-5 seconds is wild! 🤯).
 
 - **Cross** - Solve four edge pieces on the bottom face (intuitive)
-- **F2L** (First Two Layers) - Insert edge-corner pairs into four slots (intuitive, 4 core cases)
-- **OLL** (Orientation of Last Layer) - Orient last layer pieces (algorithmic, 9 cases for 2-look)
-- **PLL** (Permutation of Last Layer) - Position last layer pieces (algorithmic, 6 cases for 2-look)
+- **F2L** (First Two Layers) - Insert edge-corner pairs into four slots (intuitive). There are 41 cases in total, or  4 if use intuitive method.
+- **OLL** (Orientation of Last Layer) - Orient last layer pieces (algorithmic). There are 57 cases in total, or 10 if use 2-look method.
+- **PLL** (Permutation of Last Layer) - Position last layer pieces (algorithmic). There are 21 cases in total, or 6 if use 2-look method.
 
 Start with the essential four algorithms (Sune, AntiSune, T-Perm, Ua-Perm), then gradually expand to the full 2-look suite for better efficiency.
-
-### Algorithm coverage (full sets)
-
-- **Beginner 2-look set (current learning grid):** 16 cases total (10 OLL + 6 PLL)
-- **F2L (full):** 41 cases
-- **OLL (full):** 57 cases
-- **PLL (full):** 21 cases
 
 ## Practice Strategies
 
