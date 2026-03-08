@@ -1,15 +1,9 @@
 import { Alg } from 'cubing/alg';
-import { randomScrambleForEvent } from 'cubing/scramble';
-import { setSearchDebug } from 'cubing/search';
 import type { ScrambleSource, ScrambleState } from '../types/practice';
-
-// Enable esbuild workaround for production builds
-setSearchDebug({ 
-  prioritizeEsbuildWorkaroundForWorkerInstantiation: true,
-  showWorkerInstantiationWarnings: false,
-});
-
-const EVENT_333 = '333';
+import {
+  generate333ScrambleWithTimeout,
+  type Generate333Result,
+} from './scrambleGenerator';
 
 const assertValidScramble = (notation: string): void => {
   const trimmed = notation.trim();
@@ -20,17 +14,39 @@ const assertValidScramble = (notation: string): void => {
   Alg.fromString(trimmed);
 };
 
+/**
+ * Generate a random 3x3 scramble using the custom local generator.
+ *
+ * Note: This is now the primary scramble generation path for the app.
+ * `cubing/scramble` worker generation has been removed from runtime usage.
+ *
+ * Guarantees:
+ * - 20-move output
+ * - No consecutive same-face moves
+ * - No opposite-face A-B-A patterns
+ * - Parseable by Alg.fromString
+ * - Resolves or fails within 1000ms
+ */
 export const generateRandom333Scramble = async (
   source: ScrambleSource = 'manual',
 ): Promise<ScrambleState> => {
-  const alg = await randomScrambleForEvent(EVENT_333);
-  const notation = alg.toString();
+  const result: Generate333Result = await generate333ScrambleWithTimeout({
+    length: 20,
+    timeoutMs: 1000,
+  });
 
+  if (!result.ok) {
+    throw new Error(
+      `Scramble generation failed: ${result.reason} - ${result.message}`
+    );
+  }
+
+  const notation = result.scrambleText;
   assertValidScramble(notation);
 
   return {
     value: notation,
-    generatedAtMs: Date.now(),
+    generatedAtMs: result.generatedAtMs,
     source,
   };
 };
