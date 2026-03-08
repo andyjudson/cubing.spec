@@ -136,7 +136,7 @@ function App() {
   return (
     <div className="container py-5 app-shell">
       <section className="section pt-0 has-text-centered">
-        <h1 className="title is-2">Cubing - Learning CFOP/h1>
+        <h1 className="title is-2">Cubing - Learning CFOP</h1>
         <p className="subtitle is-5 page-intro-subtitle">Essential OLL and PLL algorithms for solving the last layer for a 3x3x3 Rubik's cube using the 2-look methodology. Assumes you've already learnt intuitive Cross and F2L.</p>
         <p className="essentials-summary"><strong>Essentials:</strong> {essentialsSummary}</p>
       </section>
