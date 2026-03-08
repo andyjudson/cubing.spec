@@ -72,6 +72,8 @@ function OLLPage() {
     <CfopPageLayout
       pageTitle="OLL"
       subtitle="Orient Last Layer - 57 cases across 7 groups"
+      introImageSrc="/cubing.spec/assets/cfop_oll.png"
+      introImageAlt="OLL stage illustration"
       introContent={
         <p className="mb-0">
           <strong>OLL</strong> (Orientation of the Last Layer) - The goal of the third step is to make the top face

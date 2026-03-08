@@ -72,6 +72,8 @@ function F2LPage() {
     <CfopPageLayout
       pageTitle="F2L"
       subtitle="First Two Layers - 41 cases across 6 groups"
+      introImageSrc="/cubing.spec/assets/cfop_f2l.png"
+      introImageAlt="F2L stage illustration"
       introContent={
         <p className="mb-0">
           <strong>F2L</strong> (First Two Layers) - The goal of the second step is to solve the first two layers by

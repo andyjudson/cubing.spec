@@ -27,6 +27,9 @@
   color: #334155;
   font-size: 0.92rem;
   line-height: 1.5;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
 }
 
 .cfop-primer p {
@@ -35,7 +38,6 @@
 
 .cfop-primer strong {
   color: #0f172a;
-  font-weight: 700;
 }
 
 .cfop-primer ul {
@@ -49,6 +51,40 @@
 .cfop-primer a {
   color: #2563eb;
   text-decoration: underline;
+}
+
+.cfop-primer-media {
+  width: 88px;
+  height: 88px;
+  justify-self: end;
+  align-self: start;
+  border-radius: 8px;
+  border: 1px solid #dbe4ef;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cfop-primer-image {
+  width: 90%;
+  max-width: 90%;
+  object-fit: contain;
+  height: auto;
+}
+
+.cfop-primer-copy {
+  min-width: 0;
+}
+
+@media (min-width: 769px) {
+  .cfop-primer:has(.cfop-primer-media) {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 0.9rem;
+  }
 }
 
 .essentials-summary {
@@ -122,6 +158,23 @@
   border-radius: 10px;
   padding: 0.75rem 1rem;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.cfop-navbar {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cfop-navbar .navbar-brand {
+  min-height: 3.1rem;
+}
+
+.cfop-navbar .navbar-burger {
+  margin-left: auto;
+  color: #334155;
+}
+
+.cfop-navbar .navbar-item.is-active {
+  border-radius: 6px;
 }
 
   /* Collapsible section header styling */
@@ -308,6 +361,38 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .cfop-primer {
+    gap: 0.65rem;
+  }
+
+  .cfop-primer-media {
+    width: 80px;
+    height: 80px;
+    justify-self: center;
+  }
+
+  .cfop-primer-image {
+    width: 88%;
+    max-width: 88%;
+  }
+
+  .cfop-navbar .navbar-menu {
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  .cfop-navbar .navbar-start {
+    padding: 0.25rem 0;
+  }
+
+  .cfop-navbar .navbar-item {
+    font-weight: 600;
+  }
+
+  .cfop-navbar .navbar-item.is-active {
+    margin: 0 0.5rem;
+  }
+
   .essentials-summary {
     display: block;
     border-radius: 10px;

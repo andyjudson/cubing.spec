@@ -137,10 +137,12 @@ function BGRPage() {
   return (
     <CfopPageLayout
       pageTitle="2LK"
+      introImageSrc="/cubing.spec/assets/cfop_solved.png"
+      introImageAlt="Solved cube overview for CFOP 2-look intro"
       introContent={
         <>
           <p>
-            CFOP is a four-stage method: <strong>Cross</strong>, <strong>F2L</strong>, <strong>OLL</strong>, <strong>PLL</strong>. 
+            <strong>CFOP</strong> is a four-stage method: <strong>Cross</strong>, <strong>F2L</strong>, <strong>OLL</strong>, <strong>PLL</strong>. 
             Cross and F2L use intuitive solving—no algorithms required. 
             OLL and PLL traditionally require memorizing 57 and 21 algorithms respectively, which can be overwhelming for beginners.
           </p>
