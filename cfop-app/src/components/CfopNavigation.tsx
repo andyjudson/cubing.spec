@@ -8,7 +8,8 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { path: '/2lk', label: '2LK' },
+  { path: '/intuitive', label: 'Intuitive' },
+  { path: '/2lk', label: 'Beginner' },
   { path: '/f2l', label: 'F2L' },
   { path: '/oll', label: 'OLL' },
   { path: '/pll', label: 'PLL' },
