@@ -2,6 +2,8 @@
 
 A spec-driven CFOP learning companion for Rubik's cube speedsolving. Built to support my journey from beginner method to sub-2-minute solves using the CFOP method.
 
+**Live app:** https://andyjudson.github.io/cubing.spec/
+
 ## What is this?
 
 This project serves as a personal reference for learning and practicing CFOP (Cross, F2L, OLL, PLL) — the dominant speedcubing method used in competitive solving. The app provides algorithm grids, interactive visualizations, practice timers, and solve tracking to make learning efficient and fun.
@@ -22,6 +24,13 @@ CFOP is a four-step 3x3 speedcubing method developed around 1981 and is responsi
 - **PLL** (Permutation of Last Layer) - Position last layer pieces (algorithmic, 6 cases for 2-look)
 
 Start with the essential four algorithms (Sune, AntiSune, T-Perm, Ua-Perm), then gradually expand to the full 2-look suite for better efficiency.
+
+### Algorithm coverage (full sets)
+
+- **Beginner 2-look set (current learning grid):** 16 cases total (10 OLL + 6 PLL)
+- **F2L (full):** 41 cases
+- **OLL (full):** 57 cases
+- **PLL (full):** 21 cases
 
 ## Practice Strategies
 

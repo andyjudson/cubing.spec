@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-03-08 (retrospective) - Features 001-005 Baseline
+
+### Feature 001 - Beginner 2-look Algorithm Cases Grid
+- Added static learning grids for beginner/2-look CFOP cases.
+- Structured OLL and PLL by edge/corner groupings with consistent card layout.
+- Added mobile-friendly responsive presentation for algorithm browsing.
+
+### Feature 002 - Algorithm Notes on Hover
+- Added hover/tap tooltips for algorithm notes.
+- Integrated markdown rendering for note content.
+- Tuned light-theme styling for readability and consistent section presentation.
+
+### Feature 003 - Algorithm Demo with cubing.js
+- Added random algorithm demo modal with TwistyPlayer visualization.
+- Implemented custom playback controls (play/pause/rewind/speed).
+- Added synchronized move highlighting tied to player timeline events.
+
+### Feature 004 - Practice Scramble + Solve Timer Modal
+- Added dedicated practice modal with scramble generation and solve timer.
+- Added deterministic timer state flow (`idle`, `running`, `stopped`).
+- Added running-state protection to prevent scramble changes during active timing.
+
+### Feature 005 - Persistent Solve Time Stats
+- Added localStorage-backed solve history persistence.
+- Added stats display for last solve, rolling average of 5, and personal best.
+- Added reset flow and defensive validation for corrupted storage data.
+
 ## 2026-03-08 - Feature 006: Local Scramble Generator
 
 ### Added
