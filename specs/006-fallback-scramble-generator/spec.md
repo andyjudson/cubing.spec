@@ -79,8 +79,8 @@ As a maintainer, I want obsolete worker-specific Vite workarounds removed once f
 - **FR-003**: The generator MUST produce non-empty scramble strings with a fixed length of 20 moves for v1.
 - **FR-004**: The generator MUST avoid immediate move cancellation and same-face repetition in consecutive moves.
 - **FR-005**: The practice modal MUST use the fallback generator for scramble requests in both development and production builds.
-- **FR-006**: The app MUST preserve existing timer, solve stats, and modal UX behavior after migration.
-- **FR-007**: The app MUST keep generated scramble output compatible with cubing.js visualization/parsing integration paths.
+- **FR-006**: The app MUST preserve existing timer, solve stats, modal UX behavior, and scramble-protection-during-active-timer after migration (users cannot request new scramble while timer is running).
+- **FR-007**: The app MUST keep generated scramble output compatible with cubing.js parsing APIs; visualization/rendering compatibility is optional for v1 (may be deferred to Feature 007 cube-img-gen tool).
 - **FR-008**: Once runtime dependence on `cubing/scramble`/`cubing/search` is removed, Vite worker workaround configuration MUST be removed or reduced to only still-needed settings.
 - **FR-009**: Build and deployment pipelines MUST pass after configuration cleanup.
 - **FR-010**: The feature MUST clearly communicate that generated scrambles are practice-grade and not official WCA competition scrambles.
@@ -146,7 +146,7 @@ These rules balance simplicity with scramble quality:
 ### Measurable Outcomes
 
 - **SC-001**: In production manual validation, 100% of at least 50 consecutive scramble requests return a parseable notation string.
-- **SC-002**: Practice modal no longer hangs in a persistent `Generating...` state due to scramble worker loading.
+- **SC-002**: Practice modal no longer hangs in a persistent `Generating...` state; `isGenerating` flag clears within 1000ms of request initiation.
 - **SC-003**: `npm run build` and deployed smoke test both pass with fallback generator enabled.
 - **SC-004**: After migration, Vite config no longer includes scramble-worker workaround logic that is not actively needed.
 - **SC-005**: No regressions are observed in timer controls, solve recording, or stats display during manual regression checks.

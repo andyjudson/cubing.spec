@@ -238,7 +238,7 @@ Create a local, client-side fallback scramble generator that does **not** rely o
 ### Goals
 - Keep practice flow reliable in production deployments where `cubing/scramble` fails
 - Generate readable 3x3 scramble notation using deterministic guardrails (non-trivial, no immediate cancellations)
-- Ensure generated notation is compatible with cubing.js parsing/visualization APIs
+- Ensure generated notation is compatible with cubing.js parsing APIs (visualization compatibility optional for v1)
 - Remove no-longer-needed Vite worker workaround config once fallback is active
 
 ### Non-Goals
