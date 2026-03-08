@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -e
+
+echo "Running cfop-app pre-push checks..."
+npm --prefix cfop-app run check:prepush
