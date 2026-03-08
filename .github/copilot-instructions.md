@@ -22,10 +22,14 @@
 - Iterate in small steps
 - Keep implementation details out of high-level spec unless promoted intentionally
 - Treat `legacy-projects.md` as historical project context only
-- Keep `specs/` feature numbering aligned with the feature sequence tracked in `spec.md` (current next feature is 006)
+- Keep `specs/` feature numbering aligned with the feature sequence tracked in `spec.md` (next available number only)
 - Keep feature implementation summaries inside that feature's `specs/<feature-id>/` folder (not repo root)
 - Use clean lowercase kebab-case filenames for summaries, e.g. `implementation-summary.md`
 - Avoid uppercase or "shouting" summary filenames
+- Use a hybrid spec pattern:
+  - `spec.md` = high-level narrative and canonical feature sequence ledger
+  - `specs/<NNN>-<name>/` = per-feature lifecycle artifacts (`spec.md`, `checklists/requirements.md`, `implementation-summary.md`)
+  - Retrospective backfill is acceptable for older features that predate folder-based artifacts, and should be labeled clearly
 - Before any merge/push step, require a local validation gate:
   - run local production build
   - run manual feature test pass in local instance
