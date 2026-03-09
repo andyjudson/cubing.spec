@@ -137,7 +137,7 @@ function BGRPage() {
   return (
     <CfopPageLayout
       pageTitle="Beginner Methods"
-      subtitle="Learn OLL and PLL with just 9 essential algorithms."
+      subtitle="Learn to solve last layer with just 9 essential OLL and PLL algorithms and 2-look methods"
       introImageSrc="/cubing.spec/assets/cfop_solved.png"
       introImageAlt="Solved cube overview for CFOP 2-look intro"
       introContent={

@@ -203,7 +203,7 @@ function NotationPage() {
         {
           id: 'rotation-x',
           symbol: 'x',
-          label: 'x-axis (follows R)',
+          label: 'Follows R (X axis)',
           explanation: 'Rotate entire cube in same direction as R face',
           imageSrc: '/cubing.spec/assets/notation/syntax-X-cw-arrow.png',
           imageAlt: 'x cube rotation'
@@ -211,7 +211,7 @@ function NotationPage() {
         {
           id: 'rotation-y',
           symbol: 'y',
-          label: 'y-axis (follows U)',
+          label: 'Follows U (Y axis)',
           explanation: 'Rotate entire cube in same direction as U face',
           imageSrc: '/cubing.spec/assets/notation/syntax-Y-cw-arrow.png',
           imageAlt: 'y cube rotation'
@@ -219,7 +219,7 @@ function NotationPage() {
         {
           id: 'rotation-z',
           symbol: 'z',
-          label: 'z-axis (follows F)',
+          label: 'Follows F (Z axis)',
           explanation: 'Rotate entire cube in same direction as F face',
           imageSrc: '/cubing.spec/assets/notation/syntax-Z-cw-arrow.png',
           imageAlt: 'z cube rotation'
@@ -262,7 +262,7 @@ function NotationPage() {
   return (
     <CfopPageLayout
       pageTitle="Notation Reference"
-      subtitle="A comprehensive reference for understanding cube notation, including face turns, modifiers, slices, rotations, and common triggers."
+      subtitle="A comprehensive reference for understanding cube notation, including face turns, modifiers, slices, rotations, and triggers"
     >
       <div className="container">
         {sections.length === 0 ? (
@@ -290,6 +290,7 @@ function NotationPage() {
           <div className="section notation-section">
             <h2 className="title is-4">Common Triggers</h2>
             <div className="content">
+              <p>Triggers are short, repeatable sequences commonly used in algorithms to manipulate pieces efficiently. They are usually enclosed in brackets. To invert any algorithm segment, you reverse the order of the moves and invert each move. Here are some of the important named ones:</p>            
               <table className="table is-fullwidth notation-plain-table">
                 <thead>
                   <tr>

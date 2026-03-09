@@ -155,7 +155,7 @@ export default function IntuitivePage() {
   return (
     <CfopPageLayout
       pageTitle="Intuitive Methods"
-      subtitle="Learn Cross and F2L through pattern recognition and positional logic before algorithm-heavy practice."
+      subtitle="Learn to solve first two layers with Cross and F2L pattern recognition and positional logic"
     >
       <section className="section intuitive-section">
         <h2 className="title is-4 section-title">Intuitive Cross</h2>

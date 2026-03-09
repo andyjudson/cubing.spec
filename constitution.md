@@ -72,6 +72,12 @@ This application exists to help users (namely me) learn Rubik's cube solving met
 - If historical features are missing folders, backfill them as retrospective artifacts and label them clearly as retrospective.
 - Prefer this hybrid pattern over either extreme (single monolithic spec only, or disconnected per-feature docs only).
 
+### Maintenance & Refactor Workflow
+- Treat cross-cutting cleanup (styling consistency, component reuse, deduplication, architecture hardening) as maintenance work, not feature delivery, unless it introduces new end-user functionality.
+- Before starting maintenance, add a short scope note in planning artifacts (target area, acceptance criteria, and constraints) so changes are auditable.
+- After completion, update implementation notes/instructions with the final standards that were actually implemented.
+- Keep maintenance commits focused and incremental (small batches with validation between batches).
+
 ### Architecture Decisions
 - Component-based React architecture
 - State management via React hooks

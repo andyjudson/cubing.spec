@@ -6,13 +6,12 @@
 - Ignore `cubing.react` and `cubing.static` unless explicitly requested.
 
 ## Current Status
-- Features 001, 002, 003, 004, and 005 completed in `spec.md`:
-  - Feature 001: Learning 2-look beginner cases grid ✅
-  - Feature 002: Algorithm notes on hover with tooltips ✅
-  - Feature 003: Cubing.js solve visualization player modal ✅
-  - Feature 004: Practice scramble + solve timer modal ✅
-  - Feature 005: Persistent solve time stats with localStorage ✅
-- Ready for Feature 006 specification via speckit.specify workflow
+- Features 001 through 010 are implemented in `cfop-app` and tracked in specs artifacts.
+- Current focus is a maintenance cleanup pass for:
+  - CSS consistency (light surfaces, contrast, typography)
+  - Reusable page primitives (cards/sections)
+  - Style deduplication and maintainability
+- Do maintenance cleanup before starting the next net-new feature specification.
 
 ## Resource usage
 - Reuse shared resources from `cubing.spec/shared-data` and `cubing.spec/shared-assets`
@@ -35,6 +34,7 @@
   - run manual feature test pass in local instance
   - perform a brief manual review/checklist sign-off
 - Merge/push only after the local validation gate passes
+- For maintenance/refactor work, record a short pre-change scope note first, then finalize guidance after implementation.
 
 ## Implementation Notes
 - Use shared resources via symlinks
