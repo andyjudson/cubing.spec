@@ -5,16 +5,7 @@ import { AlgorithmGroupSection } from '../components/AlgorithmGroupSection';
 import { ExpandCollapseControls } from '../components/ExpandCollapseControls';
 import { useSectionToggle } from '../hooks/useSectionToggle';
 import { ErrorBoundary } from '../components/ErrorBoundary';
-
-interface CfopAlgorithm {
-  id: string;
-  name: string;
-  notation: string;
-  method: string;
-  group: string;
-  image: string;
-  notes?: string;
-}
+import { AlgorithmCard, type CfopAlgorithm } from '../components/AlgorithmCard';
 
 interface GroupedAlgorithms {
   [group: string]: CfopAlgorithm[];
@@ -46,10 +37,11 @@ function PLLPage() {
 
   // Group algorithms by group
   const groupedAlgorithms: GroupedAlgorithms = algorithms.reduce((acc, alg) => {
-    if (!acc[alg.group]) {
-      acc[alg.group] = [];
+    const group = alg.group || 'default';
+    if (!acc[group]) {
+      acc[group] = [];
     }
-    acc[alg.group].push(alg);
+    acc[group].push(alg);
     return acc;
   }, {} as GroupedAlgorithms);
 
@@ -97,20 +89,7 @@ function PLLPage() {
           <div className="columns is-multiline">
             {groupedAlgorithms[groupId].map(alg => (
               <div key={alg.id} className="column is-one-third-desktop is-half-tablet">
-                <div className="card algo-card algo-card-compact">
-                  <div className="card-content has-text-centered">
-                    <div className="image-container">
-                      <img 
-                        src={alg.image} 
-                        alt={alg.name}
-                      />
-                    </div>
-                    <h3 className="title is-5 mt-3">{alg.name}</h3>
-                    <div className="content">
-                      <code className="notation">{alg.notation}</code>
-                    </div>
-                  </div>
-                </div>
+                <AlgorithmCard algorithm={alg} variant="compact" />
               </div>
             ))}
           </div>
