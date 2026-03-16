@@ -80,7 +80,7 @@
 /* Tooltip for algorithm notes */
 .algo-card .tooltip {
   position: absolute;
-  left: calc(100% + 4px);
+  left: calc(80% + 4px);
   top: 50%;
   transform: translateY(-50%);
   background: var(--color-bg-base);
@@ -89,8 +89,7 @@
   padding: var(--space-md) var(--space-lg);
   box-shadow: var(--shadow-xl);
   z-index: 100;
-  min-width: 240px;
-  max-width: 280px;
+  width: 240px;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -120,7 +119,7 @@
 
 .algo-card .tooltip.tooltip-left {
   left: auto;
-  right: calc(100% + 12px);
+  right: calc(80% + 4px);
 }
 
 .algo-card .tooltip.tooltip-left::before {
@@ -169,8 +168,8 @@
 }
 
 .intuitive-case-label {
-  color: var(--color-accent-dark);
-  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
   margin-bottom: var(--space-md);
 }

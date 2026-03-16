@@ -100,7 +100,7 @@ const F2L_STEP3_CASES: ExampleCase[] = [
     id: 'f2l-step3-white-side-colours-match',
     label: 'white to side + colours matched',
     image: '/cubing.spec/assets/cfop_bgr/f2l_case3_setup1.png',
-    alt: 'F2L insert setup: white to side and colours matchede.',
+    alt: 'F2L insert setup: white to side and colours matched.',
   },
   {
     id: 'f2l-step3-white-side-colours-not-match',

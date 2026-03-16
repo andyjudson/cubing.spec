@@ -39,6 +39,7 @@ export function CfopNavigation() {
             <span aria-hidden="true" />
             <span aria-hidden="true" />
             <span aria-hidden="true" />
+            <span aria-hidden="true" />
           </button>
         </div>
         <div id="cfop-navbar-menu" className={`navbar-menu ${isMenuOpen ? 'is-active' : ''}`}>

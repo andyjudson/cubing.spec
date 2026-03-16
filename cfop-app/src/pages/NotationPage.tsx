@@ -291,26 +291,18 @@ function NotationPage() {
             <h2 className="title is-4">Common Triggers</h2>
             <div className="content">
               <p>Triggers are short, repeatable sequences commonly used in algorithms to manipulate pieces efficiently. They are usually enclosed in brackets. To invert any algorithm segment, you reverse the order of the moves and invert each move. Here are some of the important named ones:</p>            
-              <table className="table is-fullwidth notation-plain-table">
-                <thead>
-                  <tr>
-                    <th className="notation-table-header">Name</th>
-                    <th className="notation-table-header">Sequence</th>
-                    <th className="notation-table-header">Inverse</th>
-                    {triggers.some(t => t.context) && <th className="notation-table-header">Context</th>}
-                  </tr>
-                </thead>
-                <tbody>
-                  {triggers.map((trigger) => (
-                    <tr key={trigger.id}>
-                      <td><span className="trigger-name-header">{trigger.name}</span></td>
-                      <td><span className="trigger-syntax">{trigger.sequence}</span></td>
-                      <td><span className="trigger-syntax">{trigger.inverse}</span></td>
-                      {triggers.some(t => t.context) && <td>{trigger.context || '—'}</td>}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <ul className="notation-trigger-list">
+              {triggers.map(trigger => (
+                <li key={trigger.id} className="notation-trigger-item">
+                  <div>
+                    <span className="trigger-name">{trigger.name}</span>
+                    <span className="trigger-context">({trigger.context})</span>
+                    <span className="trigger-syntax">{trigger.sequence}</span>
+                    <span className="trigger-inverse">(inverse: {trigger.inverse})</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
             </div>
           </div>
         )}
