@@ -100,7 +100,7 @@ const F2L_STEP3_CASES: ExampleCase[] = [
     id: 'f2l-step3-white-side-colours-match',
     label: 'white to side + colours matched',
     image: '/cubing.spec/assets/cfop_bgr/f2l_case3_setup1.png',
-    alt: 'F2L insert setup: white to side and colours matchede.',
+    alt: 'F2L insert setup: white to side and colours matched.',
   },
   {
     id: 'f2l-step3-white-side-colours-not-match',
@@ -163,7 +163,9 @@ export default function IntuitivePage() {
           The goal of this step is to solve first-layer edges so white edges align with their matching side
           centres. The Cross can always be solved in 8 moves or fewer. Keep white on bottom, start with easier
           cases, avoid disrupting solved edges, remember opposite colours (red/orange, green/blue), and avoid
-          unnecessary cube rotations.
+          unnecessary cube rotations. 
+          I'd recommend watching CubeHead's - learning <a href="https://www.youtube.com/watch?v=M-vKaV2NbEo">
+          Intuitive Cross</a> video.
         </p>
         <ul className="intuitive-list">
           <li>
@@ -183,6 +185,8 @@ export default function IntuitivePage() {
         <p className="intuitive-note">
           The goal is to solve the first two layers by pairing corners and edges, then inserting those pairs into
           slots around the Cross. Focus on repeatable patterns and setup ideas rather than memorizing long lists.
+          I'd recommend watching CubeHead's - learning <a href="https://www.youtube.com/watch?v=ReOZZHscIGk">
+          Intuitive F2L</a> video.
         </p>
 
         <h3 className="title is-5 intuitive-step-title">Step 1: Easy Inserts</h3>

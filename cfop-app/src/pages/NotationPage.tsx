@@ -84,20 +84,20 @@ function NotationPage() {
       description: 'Each face of the cube can be turned clockwise (no symbol), counterclockwise (prime \'), or 180 degrees (2).',
       examples: [
         {
-          id: 'face-U',
-          symbol: 'U',
-          label: 'Up Face',
-          explanation: 'Turn the top face clockwise 90 degrees',
-          imageSrc: '/cubing.spec/assets/notation/syntax-U-cw-arrow.png',
-          imageAlt: 'Up face clockwise rotation'
-        },
-        {
           id: 'face-R',
           symbol: 'R',
           label: 'Right Face',
           explanation: 'Turn the right face clockwise 90 degrees',
           imageSrc: '/cubing.spec/assets/notation/syntax-R-cw-arrow.png',
           imageAlt: 'Right face clockwise rotation'
+        },
+        {
+          id: 'face-U',
+          symbol: 'U',
+          label: 'Up Face',
+          explanation: 'Turn the top face clockwise 90 degrees',
+          imageSrc: '/cubing.spec/assets/notation/syntax-U-cw-arrow.png',
+          imageAlt: 'Up face clockwise rotation'
         },
         {
           id: 'face-F',
@@ -277,7 +277,7 @@ function NotationPage() {
               <p className="subtitle is-6">{section.description}</p>
               <div className="columns is-multiline">
                 {section.examples.map((example) => (
-                  <div key={example.id} className="column is-one-third-tablet is-one-quarter-desktop">
+                  <div key={example.id} className="column is-one-third-desktop">
                     <NotationExampleTile example={example} />
                   </div>
                 ))}
@@ -291,26 +291,18 @@ function NotationPage() {
             <h2 className="title is-4">Common Triggers</h2>
             <div className="content">
               <p>Triggers are short, repeatable sequences commonly used in algorithms to manipulate pieces efficiently. They are usually enclosed in brackets. To invert any algorithm segment, you reverse the order of the moves and invert each move. Here are some of the important named ones:</p>            
-              <table className="table is-fullwidth notation-plain-table">
-                <thead>
-                  <tr>
-                    <th className="notation-table-header">Name</th>
-                    <th className="notation-table-header">Sequence</th>
-                    <th className="notation-table-header">Inverse</th>
-                    {triggers.some(t => t.context) && <th className="notation-table-header">Context</th>}
-                  </tr>
-                </thead>
-                <tbody>
-                  {triggers.map((trigger) => (
-                    <tr key={trigger.id}>
-                      <td><span className="trigger-name-header">{trigger.name}</span></td>
-                      <td><span className="trigger-syntax">{trigger.sequence}</span></td>
-                      <td><span className="trigger-syntax">{trigger.inverse}</span></td>
-                      {triggers.some(t => t.context) && <td>{trigger.context || '—'}</td>}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <ul className="notation-trigger-list">
+              {triggers.map(trigger => (
+                <li key={trigger.id} className="notation-trigger-item">
+                  <div>
+                    <span className="trigger-name">{trigger.name}</span>
+                    <span className="trigger-context">({trigger.context})</span>
+                    <span className="trigger-syntax">{trigger.sequence}</span>
+                    <span className="trigger-inverse">(inverse: {trigger.inverse})</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
             </div>
           </div>
         )}

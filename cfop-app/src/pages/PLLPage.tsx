@@ -68,7 +68,7 @@ function PLLPage() {
       introImageAlt="PLL stage illustration"
       introContent={
         <p className="mb-0">
-          <strong>PLL</strong> (Permutation of the Last Layer) - The goal of the fourth step is to solve the cube by
+          <strong>PLL</strong> (Permute Last Layer) - The goal of the fourth step is to solve the cube by
           repositioning last-layer pieces. There are 21 total cases, or a smaller set when using 2-look methods.
         </p>
       }

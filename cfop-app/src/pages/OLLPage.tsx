@@ -68,7 +68,7 @@ function OLLPage() {
       introImageAlt="OLL stage illustration"
       introContent={
         <p className="mb-0">
-          <strong>OLL</strong> (Orientation of the Last Layer) - The goal of the third step is to make the top face
+          <strong>OLL</strong> (Orient Last Layer) - The goal of the third step is to make the top face
           a single color. There are 57 total cases, or a much smaller set when using 2-look methods.
         </p>
       }

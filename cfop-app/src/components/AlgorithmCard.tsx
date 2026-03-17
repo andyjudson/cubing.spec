@@ -89,7 +89,7 @@ export function IntuitiveCaseCard({ label, image, alt, moveHint }: IntuitiveCase
   return (
     <div className="card intuitive-case-card">
       <div className="card-content has-text-centered">
-        <h4 className="intuitive-case-label">{label}</h4>
+        <h6 className="intuitive-case-label">{label}</h6>
         <img src={image} alt={alt} className="intuitive-case-image" loading="lazy" />
         {moveHint && <p className="intuitive-move-hint mt-2">{moveHint}</p>}
       </div>
