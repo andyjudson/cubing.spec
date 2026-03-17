@@ -189,6 +189,10 @@
   display: list-item;
 }
 
+.intuitive-list strong {
+  color: var(--color-text-primary);
+}
+
 .intuitive-case-card {
   background: var(--color-bg-base) !important;
   color: var(--color-text-primary);

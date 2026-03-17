@@ -161,20 +161,22 @@ export default function IntuitivePage() {
         <h2 className="title is-4 section-title">Intuitive Cross</h2>
         <p className="intuitive-note">
           The goal of this step is to solve first-layer edges so white edges align with their matching side
-          centres. The Cross can always be solved in 8 moves or fewer. Keep white on bottom, start with easier
-          cases, avoid disrupting solved edges, remember opposite colours (red/orange, green/blue), and avoid
+          centres. The cross can always be solved in 8 moves or fewer. Keep white on bottom, start with easier
+          cases, avoid disrupting solved edges, remember opposite colours (red/orange, green/blue) to avoid
           unnecessary cube rotations. 
           I'd recommend watching CubeHead's - learning <a href="https://www.youtube.com/watch?v=M-vKaV2NbEo">
           Intuitive Cross</a> video.
         </p>
         <ul className="intuitive-list">
           <li>
-            If a white edge is positioned but not oriented (for example in the yellow face), align it to the
-            matching side centre and rotate it to the target slot.
+            If a <strong>white edge is positioned but not oriented</strong>, align it to the
+            matching side centre and insert it into the target slot.
           </li>
-          <li>If a white edge is oriented but not positioned, take it out and reinsert into the target slot.</li>
           <li>
-            If a white edge is flipped, take it out, open the target slot safely, then reinsert it correctly.
+            If a <strong>white edge is oriented but not positioned</strong>, take it out and insert into the target slot.
+          </li>
+          <li>
+            If a <strong>white edge is flipped</strong>, take it out, open the target slot, then insert into the target slot.
           </li>
         </ul>
         <CaseCards cases={CROSS_CASES} columnsClass="column is-one-third-desktop is-half-tablet" />
@@ -184,7 +186,7 @@ export default function IntuitivePage() {
         <h2 className="title is-4 section-title">Intuitive F2L</h2>
         <p className="intuitive-note">
           The goal is to solve the first two layers by pairing corners and edges, then inserting those pairs into
-          slots around the Cross. Focus on repeatable patterns and setup ideas rather than memorizing long lists.
+          slots around the cross, ignoring all yellows. Focus on repeatable patterns and setup ideas rather than memorizing long lists. 
           I'd recommend watching CubeHead's - learning <a href="https://www.youtube.com/watch?v=ReOZZHscIGk">
           Intuitive F2L</a> video.
         </p>
@@ -192,36 +194,55 @@ export default function IntuitivePage() {
         <h3 className="title is-5 intuitive-step-title">Step 1: Easy Inserts</h3>
         <ul className="intuitive-list">
           <li>
-            If matching colours face up, hold the cube so the matched side is on the working side, push pair
+            First, solve cases where pairs are in the upper layer.
+          </li>
+          <li>
+            If <strong>matching colours face up</strong>, hold the cube so the matched side is on the working side, push pair
             aside, open slot, insert, then close slot.
           </li>
           <li>
-            If different colours face up, hold so white faces the working side, set up the pair, insert, then
-            realign the Cross.
-          </li>
+            If <strong>different colours face up</strong>, hold so white faces the matching side, set up the pair, insert, then
+            realign the cross.
+          </li>      
         </ul>
         <CaseCards cases={step1Cases} columnsClass="column is-one-quarter-desktop is-half-tablet" />
 
         <h3 className="title is-5 intuitive-step-title">Step 2: Setup Pairs</h3>
         <ul className="intuitive-list">
-          <li>Find an edge-corner pair.</li>
-          <li>Set up an easy-insert style case with the pair disconnected in the top layer.</li>
-          <li>Insert the aligned pair without breaking solved slots.</li>
+          <li>
+            Second, find cases where edge-corner pairs are not both in the upper layer and disconnected.
+          </li>
+          <li>
+           When opening the slot, place the corner over the target slot, 
+           then turn the upper layer 90&#176; in the direction which keeps the white visible on the side.
+          </li>
+          <li>
+            Where you have easy inserts patterns, solve these as before, 
+            otherwise you'll need to use a setup insert pattern, which we cover next.
+          </li>        
         </ul>
         <CaseCards cases={step2Cases} columnsClass="column is-one-quarter-desktop is-half-tablet" />
 
         <h3 className="title is-5 intuitive-step-title">Step 3: Setup Inserts</h3>
         <ul className="intuitive-list">
           <li>
-            If white is on the side and colours match, move the edge next to the corner to set up an insert case.
+            Third, setup edge-corner pairs are in the upper layer so that oriented and connected, ready for insert.
           </li>
           <li>
-            If white is on the side and colours do not match, move the edge across from the corner to set up an
-            insert case.
+            If <strong>white is on the side and colours match</strong>, safely move the <strong>edge next</strong> to its corner
+             - move the corner over the target slot, then turn the upper layer 90&#176; 
+           in the direction which keeps the white visible on the side, then hide the corner in the slot, 
+           so you can safely turn the upper layer to bring the edge into connected position ready for insert.
           </li>
           <li>
-            If white is up, move the edge over its centre, move it to safety, then position the corner over the
-            edge to form an insert case.
+            If <strong>white is on the side and colours do not match</strong>, safely move the <strong>edge across</strong> from its corner
+             - move the corner over the target slot, then turn the upper layer 90&#176; 
+           in the direction which keeps the white visible on the side, then hide the corner in the slot, 
+           so you can safely turn the upper layer to bring the edge into connected position ready for insert.
+          </li>
+          <li>
+            If <strong>white is up</strong>, move the <strong>edge over</strong> its centre - with the colour matched on the side, rotate the edge safely into the back slot, then position the corner over the
+            edge to form the pair, then rotate the edge corner pair back up ready for insert.
           </li>
         </ul>
         <CaseCards cases={step3Cases} columnsClass="column is-one-third-desktop is-half-tablet" />
