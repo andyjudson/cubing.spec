@@ -89,8 +89,8 @@ function BGRPage() {
         <>
           <p className="mb-0">
             Beginner <strong>2-look</strong> methods simplify the last layer by breaking OLL and PLL into smaller subsets, 
-            reducing the algorithm count to just 9 cases, but require repetition. Learn these first to solve reliably around 1 to 2 minutes, 
-            then expand to full OLL/PLL, and lastly full F2L.
+            reducing the algorithm count to around 5 to 12 cases, but require repetition. 
+            Learn these first to solve reliably around 1 to 2 minutes, then expand to full OLL/PLL, and lastly full F2L.
           </p>
           <p className="mt-2 mb-0">
             I'd recommend watching CubeHead's - learning 2-look <a href="https://youtu.be/6PSBaxlBqRg?si=s3rRGgffgKjKl6KM">OLL</a> and <a href="https://youtu.be/ZC9nwou59ow?si=GTKodwgH84Rwp6Yt">PLL</a> videos.

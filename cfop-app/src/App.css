@@ -206,7 +206,7 @@
 }
 
 .intuitive-case-label {
-  color: var(--color-accent-text-primary);
+  color: var(--color-text-tertiary);
   font-weight: var(--font-weight-semibold);
   line-height: 1.25;
   min-height: 2.5rem;
