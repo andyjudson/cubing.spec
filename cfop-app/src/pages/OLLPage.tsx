@@ -69,7 +69,7 @@ function OLLPage() {
       introContent={
         <p className="mb-0">
           <strong>OLL</strong> (Orient Last Layer) - The goal of the third step is to make the top face
-          a single color. There are 57 total cases, or a much smaller set when using 2-look methods.
+          a single color. There are 57 total cases, or 10 when using 2-look method.
         </p>
       }
     >

@@ -210,7 +210,7 @@ export default function IntuitivePage() {
         <h3 className="title is-5 intuitive-step-title">Step 2: Setup Pairs</h3>
         <ul className="intuitive-list">
           <li>
-            Second, find cases where edge-corner pairs are not both in the upper layer and disconnected.
+            Second, find cases where edge-corner pairs are not in the upper layer and disconnected.
           </li>
           <li>
            When opening the slot, place the corner over the target slot, 
@@ -226,7 +226,7 @@ export default function IntuitivePage() {
         <h3 className="title is-5 intuitive-step-title">Step 3: Setup Inserts</h3>
         <ul className="intuitive-list">
           <li>
-            Third, setup edge-corner pairs are in the upper layer so that oriented and connected, ready for insert.
+            Third, setup edge-corner pairs in the upper layer so that oriented and connected, ready for insert.
           </li>
           <li>
             If <strong>white is on the side and colours match</strong>, safely move the <strong>edge next</strong> to its corner

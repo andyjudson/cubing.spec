@@ -69,8 +69,8 @@ function F2LPage() {
       introContent={
         <p className="mb-0">
           <strong>F2L</strong> (First Two Layers) - The goal of the second step is to solve the first two layers by
-          inserting edge-corner pairs in the four slots around the cross. There are 41 possible cases, but intuitive
-          approaches reduce this to a smaller practical subset when pairs are already in the top layer.
+          inserting edge-corner pairs in the four slots around the cross. There are 41 total cases, but the intuitive
+          method reduce this to 4 simple inserts when pairs are setup in the top layer.
         </p>
       }
     >

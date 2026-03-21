@@ -330,9 +330,10 @@ Add complete CFOP algorithm reference pages (F2L, OLL, PLL) to cfop-app with nav
 ## Feature Backlog (Not in Scope)
 All of below ideas are out of scope until explicitly requested. We are just capturing them here as a backlog. We'll explore them iteratively using speckit.specify prompts.
 **Roadmaps**
-- Notation primer
-- Intuitive Cross and F2L primer
-- Lookup official WCA event shuffles, agent skill to scrape them scrambles vs events vs records?
+- Notation primer >> done
+- Intuitive Cross and F2L primer >> done
+- About page (migrate sections from readme)
+- Integrate official WCA event scrambles, "beat the champion" mode and "world record evolution"
 - Interactive visualizations for any user selected cases
 - Algorithm learning tracking for practice
 - Revisit UI design, layout, theme, components
