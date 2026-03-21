@@ -101,7 +101,7 @@ Each application is independent with its own package.json and build configuratio
 ```bash
 cd cfop-app
 npm install
-npm run dev  # http://127.0.0.1:5173/cubing.spec/
+npm run dev  # http://localhost:5173/cubing.spec/
 ```
 
 ### imggen-app
