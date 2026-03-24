@@ -80,7 +80,7 @@ export default function App() {
           loggedAtMs: Date.now(),
         }
 
-        console.log('[imggen] apply', logEntry)
+        console.log('[cubify] apply', logEntry)
       }
     }
   }, [formState, hasMoveAlgorithm, moveValidation.isValid, validationState.canApply])

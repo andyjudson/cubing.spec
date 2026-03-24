@@ -1,4 +1,4 @@
-# imggen-app
+# cubify-app
 
 Local-only standalone cube image generator for 3×3 algorithm documentation.
 
@@ -85,7 +85,7 @@ Standalone application with no runtime coupling:
 ## File Structure
 
 ```
-imggen-app/
+cubify-app/
 ├── src/
 │   ├── App.tsx              # Main component with state management
 │   ├── App.css              # Application-level styles
