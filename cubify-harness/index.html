@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cubify-poc demo</title>
-  <link rel="stylesheet" href="../css/cubify.css" />
+  <title>cubify-harness</title>
+  <link rel="stylesheet" href="./css/cubify.css" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -100,8 +100,7 @@
 </head>
 <body>
 
-<h1>cubify-poc</h1>
-<p class="subtitle">Feature 020 — 3D cube renderer proof of concept. Container has no explicit height.</p>
+<h1>cubify-harness</h1>
 
 <div class="layout">
 
@@ -169,22 +168,10 @@
   <pre id="face-state-pre" style="display:none"></pre>
 </div>
 
-<script type="importmap">
-  {
-    "imports": {
-      "three": "../node_modules/three/build/three.module.js",
-      "three/examples/jsm/controls/OrbitControls.js": "../node_modules/three/examples/jsm/controls/OrbitControls.js",
-      "cubing/puzzles": "../node_modules/cubing/dist/lib/cubing/puzzles/index.js",
-      "cubing/alg": "../node_modules/cubing/dist/lib/cubing/alg/index.js",
-      "cubing/kpuzzle": "../node_modules/cubing/dist/lib/cubing/kpuzzle/index.js"
-    }
-  }
-</script>
-
 <script type="module">
-  import { CubeState } from '../src/CubeState.js';
-  import { AlgParser } from '../src/AlgParser.js';
-  import { CubeRenderer3D } from '../src/CubeRenderer3D.js';
+  import { CubeState } from './src/CubeState.js';
+  import { AlgParser } from './src/AlgParser.js';
+  import { CubeRenderer3D } from './src/CubeRenderer3D.js';
 
   // Warm up kpuzzle early (cached after first call)
   const _solvedBase = await CubeState.solved();
@@ -194,8 +181,7 @@
     { label: 'Solved',  notation: '' },
     { label: 'Sune',    notation: "R U R' U R U2 R'" },
     { label: 'T-Perm',  notation: "R U R' U' R' F R2 U' R' U' R U R' F'" },
-    { label: 'Sexy ×4', notation: "R U R' U' R U R' U' R U R' U' R U R' U'" },
-    { label: "Fish OLL", notation: "R' F R F' R' F R F'" },
+    { label: 'Sexy ×6', notation: "R U R' U' R U R' U' R U R' U' R U R' U' R U R' U' R U R' U'" },
   ];
 
   // ---- Stickering presets ----
@@ -273,10 +259,9 @@
   function animateStepForward(onDone) {
     if (stepIndex >= currentMoves.length) { onDone?.(); return; }
     const move = currentMoves[stepIndex];
-    const before = _solvedBase.applyAlg(currentMoves.slice(0, stepIndex));
     stepIndex++;
-    const after = _solvedBase.applyAlg(currentMoves.slice(0, stepIndex));
-    renderer.animateMove(move, before, after, () => {
+    renderer.animateMove(move, () => {
+      const after = _solvedBase.applyAlg(currentMoves.slice(0, stepIndex));
       faceStatePre.textContent = after.toString();
       updateStepLabel();
       onDone?.();
@@ -359,7 +344,15 @@
   // ---- Step controls ----
   document.getElementById('btn-prev').onclick = () => {
     stopPlay();
-    if (stepIndex > 0) snapToStep(stepIndex - 1);
+    if (stepIndex <= 0 || renderer._animating) return;
+    const lastMove = currentMoves[stepIndex - 1];
+    const inverseMove = CubeState.invertAlg([lastMove])[0];
+    stepIndex--;
+    renderer.animateMove(inverseMove, () => {
+      const state = _solvedBase.applyAlg(currentMoves.slice(0, stepIndex));
+      faceStatePre.textContent = state.toString();
+      updateStepLabel();
+    });
   };
   document.getElementById('btn-next').onclick = () => {
     stopPlay();
