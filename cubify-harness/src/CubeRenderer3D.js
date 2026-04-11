@@ -15,6 +15,7 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 // ---- Colours (hex strings for canvas, hex numbers for Three) ----
 const FACE_COLOURS_HEX = {
@@ -24,7 +25,7 @@ const FACE_COLOURS_HEX = {
   D: '#ffd000',
   L: '#e06000',
   B: '#0f4fad',
-  X: '#111111',  // black plastic — used for hidden faces
+  X: '#2a2a2a',  // dark grey — hidden/masked stickers (distinct from black plastic body)
 };
 const FACE_COLOURS = Object.fromEntries(
   Object.entries(FACE_COLOURS_HEX).map(([k, v]) => [k, parseInt(v.slice(1), 16)])
@@ -51,8 +52,8 @@ function makeStickerTexture(colourHex) {
   canvas.height = size;
   const ctx = canvas.getContext('2d');
 
-  // Black background (plastic body)
-  ctx.fillStyle = '#111111';
+  // Dark grey plastic body
+  ctx.fillStyle = '#141414';
   ctx.fillRect(0, 0, size, size);
 
   // Rounded-rect sticker
@@ -79,7 +80,7 @@ function makeStickerTexture(colourHex) {
 
 // Shared solid-black material for all inner (non-outward) faces — no texture, no sticker shape
 const BLACK_MATERIAL = new THREE.MeshStandardMaterial({
-  color: 0x111111,
+  color: 0x141414,
   roughness: 0.9,
   metalness: 0.0,
 });
@@ -109,8 +110,8 @@ function stickerIndex(pos, slot) {
   switch (slot) {
     case 0: return idx(-z, -y); // +X = R
     case 1: return idx( z, -y); // -X = L
-    case 2: return idx( x, -z); // +Y = U
-    case 3: return idx( x,  z); // -Y = D
+    case 2: return idx( x,  z); // +Y = U
+    case 3: return idx( x, -z); // -Y = D
     case 4: return idx( x, -y); // +Z = F
     case 5: return idx(-x, -y); // -Z = B
     default: return 4;
@@ -119,8 +120,8 @@ function stickerIndex(pos, slot) {
 
 // ---- Face rotation axis/filter for animation ----
 const MOVE_AXIS = {
-  U: { axis: new THREE.Vector3(0,  1, 0), dir:  1, filter: p => p.y ===  1 },
-  D: { axis: new THREE.Vector3(0,  1, 0), dir: -1, filter: p => p.y === -1 },
+  U: { axis: new THREE.Vector3(0,  1, 0), dir: -1, filter: p => p.y ===  1 },
+  D: { axis: new THREE.Vector3(0,  1, 0), dir:  1, filter: p => p.y === -1 },
   R: { axis: new THREE.Vector3(1,  0, 0), dir: -1, filter: p => p.x ===  1 },
   L: { axis: new THREE.Vector3(1,  0, 0), dir:  1, filter: p => p.x === -1 },
   F: { axis: new THREE.Vector3(0,  0, 1), dir: -1, filter: p => p.z ===  1 },
@@ -137,7 +138,7 @@ export class CubeRenderer3D {
    * @param {number}  [options.animSpeed=300]   — ms per quarter-turn animation
    * @param {boolean} [options.debug=false]
    */
-  constructor({ gap = 0.06, animSpeed = 300, debug = false } = {}) {
+  constructor({ gap = 0.02, animSpeed = 300, debug = false } = {}) {
     this._gap = gap;
     this._animSpeed = animSpeed;
     this._debug = debug;
@@ -171,7 +172,7 @@ export class CubeRenderer3D {
     this._container = container;
 
     this._scene = new THREE.Scene();
-    this._scene.background = new THREE.Color(0x111111);
+    this._scene.background = new THREE.Color(0x000000);
 
     this._camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     this._camera.position.set(5.5, 4.5, 5.5);
@@ -193,8 +194,11 @@ export class CubeRenderer3D {
     this._controls = new OrbitControls(this._camera, this._renderer.domElement);
     this._controls.enableDamping = true;
     this._controls.dampingFactor = 0.08;
-    this._controls.minDistance = 3;
-    this._controls.maxDistance = 20;
+    this._controls.minDistance = 9;
+    this._controls.maxDistance = 12;
+    // Limit vertical rotation: min ~15° above horizon, max ~75° (no looking straight down)
+    this._controls.minPolarAngle = Math.PI * 0.25;  // 45° from top — limits white visibility
+    this._controls.maxPolarAngle = Math.PI * 0.75;  // 135° — 45° past horizontal, symmetric with top
     this._controls.target.set(0, 0, 0);
 
     this._buildCubelets();
@@ -261,8 +265,8 @@ export class CubeRenderer3D {
   _buildCubelets() {
     const positions = buildCubeletPositions();
     const size = 1 - this._gap;
-    // One shared geometry for all cubelets
-    const geo = new THREE.BoxGeometry(size, size, size);
+    // Rounded box geometry — slight bevel on cubelet edges
+    const geo = new RoundedBoxGeometry(size, size, size, 2, 0.03);
 
     for (const pos of positions) {
       const isOutward = outwardSlots(pos);
@@ -298,6 +302,9 @@ export class CubeRenderer3D {
     const faces = state.toFaceArray();
     for (const cubelet of this._cubelets) {
       const { mesh, pos, isOutward } = cubelet;
+      // Reset orientation — setState reconstructs colors from the face array,
+      // which assumes identity quaternion (slot directions aligned with world axes).
+      mesh.quaternion.set(0, 0, 0, 1);
       for (let slot = 0; slot < 6; slot++) {
         if (!isOutward[slot]) {
           // Ensure inner slot always has the shared black material
@@ -331,15 +338,13 @@ export class CubeRenderer3D {
 
   /**
    * Animate a single WCA move, then call onDone when complete.
-   * Skips animation if another is already running.
+   * Colors are physically attached to cubelets — they travel with the mesh.
+   * No color reassignment happens here; setState is only for instant state loads.
    * @param {string} move
-   * @param {import('./CubeState.js').CubeState} stateBefore
-   * @param {import('./CubeState.js').CubeState} stateAfter
    * @param {Function} [onDone]
    */
-  animateMove(move, stateBefore, stateAfter, onDone) {
+  animateMove(move, onDone) {
     if (this._animating) {
-      this.setState(stateAfter);
       onDone?.();
       return;
     }
@@ -349,7 +354,6 @@ export class CubeRenderer3D {
     const def  = MOVE_AXIS[base.toUpperCase()];
 
     if (!def) {
-      this.setState(stateAfter);
       onDone?.();
       return;
     }
@@ -375,24 +379,24 @@ export class CubeRenderer3D {
       pivot.setRotationFromAxisAngle(axis, totalAngle * ease);
 
       if (t >= 1) {
-        // Snap complete — runs in same frame as the final render
         this._animTick = null;
         pivot.setRotationFromAxisAngle(axis, totalAngle);
         pivot.updateMatrixWorld();
         for (const { mesh } of moving) {
           pivot.remove(mesh);
+          // Bake the pivot rotation into the mesh — position moves, quaternion accumulates.
+          // Do NOT reset quaternion: sticker textures are physically attached and must
+          // rotate with the cubelet. Colors never change; only position and orientation do.
           mesh.applyMatrix4(pivot.matrix);
           mesh.position.x = Math.round(mesh.position.x);
           mesh.position.y = Math.round(mesh.position.y);
           mesh.position.z = Math.round(mesh.position.z);
-          mesh.quaternion.set(0, 0, 0, 1);
           this._scene.add(mesh);
         }
         this._scene.remove(pivot);
         this._updateCubeletMetadata();
-        this.setState(stateAfter);
         this._animating = false;
-        onDone?.();
+        setTimeout(() => onDone?.(), 0);
       }
     };
   }
@@ -415,22 +419,19 @@ export class CubeRenderer3D {
 
   /**
    * Animate a sequence of moves with a gap between each.
+   * State tracking is the caller's responsibility.
    * @param {string[]} moves
-   * @param {import('./CubeState.js').CubeState} startState
-   * @param {Function} onStep  — called with (moveIndex, stateAfter) after each move
+   * @param {Function} onStep  — called with (moveIndex) after each move
    * @param {Function} [onComplete]
    * @param {number} [gapMs=60]
    */
-  animateAlg(moves, startState, onStep, onComplete, gapMs = 60) {
+  animateAlg(moves, onStep, onComplete, gapMs = 60) {
     let i = 0;
-    let current = startState;
     const next = () => {
       if (i >= moves.length) { onComplete?.(); return; }
       const move = moves[i++];
-      const after = current.applyMove(move);
-      this.animateMove(move, current, after, () => {
-        onStep?.(i - 1, after);
-        current = after;
+      this.animateMove(move, () => {
+        onStep?.(i - 1);
         setTimeout(next, gapMs);
       });
     };
@@ -466,10 +467,9 @@ export class CubeRenderer3D {
     this._controls?.reset();
   }
 
-  setZoom(distance) {
-    const dir = this._camera.position.clone().normalize();
-    this._camera.position.copy(dir.multiplyScalar(distance));
-  }
+  setSpeed(ms) { this._animSpeed = ms; }
+
+  get isAnimating() { return this._animating; }
 
   getDebugLog() { return this._debugLog.join('\n'); }
 }
